@@ -1,0 +1,7 @@
+{
+    "patches": [
+        {"theme": "st-dracula"},
+        {"alpha": "st-alpha"},
+        {"scrollback": "st-scrollback"}
+    ]
+}
