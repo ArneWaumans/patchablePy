@@ -1,1 +1,1 @@
-This is a tool that makes applying patches to suckless software easier.
+This is a tool that makes applying patches to suckless software suckless.
