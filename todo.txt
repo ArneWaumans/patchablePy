@@ -2,7 +2,7 @@ V 1.) Get config file working:
     *Group patches together that need 
     to be patched in a particular order.
 
-2.) Get patches into program:
+V 2.) Get patches into program:
     *Parse config file.
 
     *Load patch identifiers into memory 
@@ -12,12 +12,9 @@ V 1.) Get config file working:
 3.) Find optimal patch configuration:
     *Disect every patch into its components.
 
-    *Create library for files. Key=filename,
-    value=array of patch components.
+    *Create diff file for every component.
 
-    *Make sure the arrays are sorted from
-    farthest to closest from the beginning of the file.
+    *sort new patch files for every source file.
 
 4.) Apply patches:
-    *Try to apply patches with python script,
-    not "git apply"
+    *Try to apply patches with "git apply" command
