@@ -9,7 +9,7 @@ V 2.) Get patches into program:
     in the right order as specified in 
     the config file.
 
-3.) Find optimal patch configuration:
+V 3.) Find optimal patch configuration:
     *Disect every patch into its components.
 
     *Create diff file for every component.

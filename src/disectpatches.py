@@ -1,8 +1,9 @@
 import os
 import math
 from pprint import pprint
+from copy import deepcopy
 
-def GetPatchCode(patchfile: str) -> list[dict]:
+def GetPatchComps(patchfile: str) -> list[dict]:
     """
     disects a patchfile into its component parts
     """
@@ -12,6 +13,7 @@ def GetPatchCode(patchfile: str) -> list[dict]:
 
     with open(patchfileDir + patchfile, "r") as patch:
         currentData = {
+            "patchname": patchfile,
             "filename": "",
             "place": 0,
             "configlines": [0, 0],
@@ -29,8 +31,7 @@ def GetPatchCode(patchfile: str) -> list[dict]:
 
                 if not firstcommit:
                     currentData["codelines"][1] = lineNumber - 1
-                    componentData.append(currentData.copy())
-                    pprint(currentData)
+                    componentData.append(deepcopy(currentData))
                 
                 firstcommit = False
 
@@ -43,19 +44,60 @@ def GetPatchCode(patchfile: str) -> list[dict]:
 
                 if prevdiffcount > 1:
                     currentData["codelines"][1] = lineNumber - 1
-                    componentData.append(currentData.copy())
-                    pprint(currentData)
+                    componentData.append(deepcopy(currentData))
 
                 currentData["place"] = math.floor(float(line.split(" ")[1].replace('-', '').replace(',', '.')))
                 currentData["codelines"][0] = lineNumber
 
             lineNumber += 1
+
         else:
             currentData["codelines"][1] = lineNumber - 1
-            componentData.append(currentData.copy())
-            pprint(currentData)
+            componentData.append(deepcopy(currentData))
 
     return componentData
 
-def CreatePatchFiles(componentFiles: list[str]):
-    pass
+def CreatePatchFiles(patchFiles: list[str]):
+    currentPath = os.path.dirname(os.getcwd()) + "/patches/"
+    destPath = os.path.dirname(os.getcwd()) + "/patchcomps/"
+    
+    allCompList = []
+    destFiles = []
+    for patchfile in patchFiles:
+        currentPatchComps = GetPatchComps(patchfile)
+        
+        for patch in currentPatchComps:
+            allCompList.append(deepcopy(patch))
+            if not any(patch["filename"] in x for x in destFiles):
+                destFiles.append(patch["filename"])
+    
+    allOrderedCompList = []
+    for destFile in destFiles:
+        currentDestFileList = []
+
+        for comp in allCompList:
+            if comp["filename"] == destFile:
+                currentDestFileList.append(deepcopy(comp))
+
+        currentDestFileList.sort(key=lambda item: item.get("place"))
+        for comp in currentDestFileList:
+            allOrderedCompList.append(deepcopy(comp))
+    pprint(allOrderedCompList)
+
+    patchCounter = 1
+    for comp in reversed(allOrderedCompList):
+        fromFile = open(currentPath + comp["patchname"], "r")
+        destFile = open(destPath + str(patchCounter) + "-" + comp["filename"] + ".diff", "w")
+        
+        lineCounter = 0
+        writeLines = []
+        for line in fromFile:
+            lineCounter += 1
+            if (    (lineCounter >= comp["configlines"][0] and lineCounter <= comp["configlines"][1]) or
+                    (lineCounter >= comp["codelines"][0]   and lineCounter <= comp["codelines"][1])):
+                writeLines.append(line)
+        destFile.writelines(writeLines)
+ 
+        fromFile.close()
+        destFile.close()
+        patchCounter += 1
