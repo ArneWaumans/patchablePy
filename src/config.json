@@ -1,5 +1,6 @@
 {
     "patches": [
-        {"alpha": "st-alpha"}
+        {"homepage": "surf-2.0-homepage"},
+        {"clipboard": "surf-clipboard"}
     ]
 }
