@@ -82,7 +82,6 @@ def CreatePatchFiles(patchFiles: list[str]):
         currentDestFileList.sort(key=lambda item: item.get("place"))
         for comp in currentDestFileList:
             allOrderedCompList.append(deepcopy(comp))
-    pprint(allOrderedCompList)
 
     patchCounter = 1
     for comp in reversed(allOrderedCompList):
@@ -100,4 +99,7 @@ def CreatePatchFiles(patchFiles: list[str]):
  
         fromFile.close()
         destFile.close()
+
+        print(destPath + str(patchCounter) + "-" + comp["filename"] + ".diff" + " has been created")
+
         patchCounter += 1

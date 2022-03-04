@@ -16,5 +16,5 @@ V 3.) Find optimal patch configuration:
 
     *sort new patch files for every source file.
 
-4.) Apply patches:
+V 4.) Apply patches:
     *Try to apply patches with "git apply" command
