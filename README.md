@@ -20,5 +20,10 @@ After that, simply run the build.sh script and the executable will be located in
 ## Usage
 cd into your suckless install and add a /patches folder. this is the folder where you have to place your .diff files. After that, just run the program and the patches will be applied automatically.
 
+E.g.
+```bash
+./patchable
+```
+
 ## License
 [GPL-v3.0](https://choosealicense.com/licenses/gpl-3.0/)
