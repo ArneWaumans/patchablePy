@@ -10,7 +10,7 @@ def numkeys(text):
 
 def cleanup():
     print("cleaning patchcomps...")
-    os.system("rm ./patchcomps/*")
+    os.system("rm -r ./patchcomps")
 
 def ApplyPatches():
     patchCompDir = os.listdir(os.getcwd() + "/patchcomps")
