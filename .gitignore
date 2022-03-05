@@ -1,3 +1,3 @@
 src/__pycache__/
-patchcomps/*
-suckmod/*
+patchcomps
+patches

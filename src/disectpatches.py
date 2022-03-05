@@ -7,7 +7,7 @@ def GetPatchComps(patchfile: str) -> list[dict]:
     """
     disects a patchfile into its component parts
     """
-    patchfileDir = os.path.dirname(os.getcwd()) + "/patches/"
+    patchfileDir = os.getcwd() + "/patches/"
     
     componentData = []
 
@@ -58,8 +58,8 @@ def GetPatchComps(patchfile: str) -> list[dict]:
     return componentData
 
 def CreatePatchFiles(patchFiles: list[str]):
-    currentPath = os.path.dirname(os.getcwd()) + "/patches/"
-    destPath = os.path.dirname(os.getcwd()) + "/patchcomps/"
+    currentPath = os.getcwd() + "/patches/"
+    destPath = os.getcwd() + "/patchcomps/"
     
     allCompList = []
     destFiles = []
