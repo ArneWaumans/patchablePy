@@ -1,4 +1,5 @@
 from pprint import pprint
+import os
 
 from getpatchnames import GetPatchNames
 from disectpatches import CreatePatchFiles
