@@ -2,9 +2,9 @@
 
 Patchable is a python script that attempts to make patching suckless software a bit more suckless. It does this by disecting the patch files, creating component patch files, and applying those component patch files from the bottom to the top for every source file.
 
-## Installation
+## Download
 
-You can download the repository with git clone.
+You can download the repository with git.
 ```bash
 git clone https://github.com/ArneWaumans/patchable.git
 ```
@@ -15,7 +15,24 @@ to build the project, you need to have [pip](https://pypi.org/project/pip/) inst
 ```bash
 pip install pyinstaller
 ```
-After that, simply run the build.sh script and the executable will be located in the /dist folder.
+After that, run
+```bash
+make build
+```
+
+## Install
+
+To install the executable, run
+```bash
+sudo make install
+```
+
+## Uninstall
+
+To uninstall the executable, run
+```bash
+sudo make uninstall
+```
 
 ## Usage
 cd into your suckless install and add a /patches folder. this is the folder where you have to place your .diff files. After that, just run the program and the patches will be applied automatically.
