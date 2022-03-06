@@ -39,7 +39,7 @@ cd into your suckless install and add a /patches folder. this is the folder wher
 
 E.g.
 ```bash
-./patchable
+patchable
 ```
 
 ## License
