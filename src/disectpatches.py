@@ -1,6 +1,5 @@
 import os
 import math
-from pprint import pprint
 from copy import deepcopy
 
 def GetPatchComps(patchfile: str):
@@ -100,6 +99,6 @@ def CreatePatchFiles(patchFiles):
         fromFile.close()
         destFile.close()
 
-        print(destPath + str(patchCounter) + "-" + comp["filename"] + ".diff" + " has been created")
+        print(str(patchCounter) + "-" + comp["filename"] + ".diff" + " has been created")
 
         patchCounter += 1
