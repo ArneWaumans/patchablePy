@@ -3,3 +3,4 @@ build
 dist
 patchable.spec
 test/surf
+.replit

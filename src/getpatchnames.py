@@ -1,6 +1,6 @@
 import os
 
-def GetPatchNames() -> list[str]:
+def GetPatchNames():
     patchDir = os.getcwd() + "/patches/";
     patchFiles = []
 

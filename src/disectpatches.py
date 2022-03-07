@@ -3,7 +3,7 @@ import math
 from pprint import pprint
 from copy import deepcopy
 
-def GetPatchComps(patchfile: str) -> list[dict]:
+def GetPatchComps(patchfile: str):
     """
     disects a patchfile into its component parts
     """
@@ -57,7 +57,7 @@ def GetPatchComps(patchfile: str) -> list[dict]:
 
     return componentData
 
-def CreatePatchFiles(patchFiles: list[str]):
+def CreatePatchFiles(patchFiles):
     currentPath = os.getcwd() + "/patches/"
     destPath = os.getcwd() + "/patchcomps/"
     
