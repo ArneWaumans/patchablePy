@@ -12,3 +12,8 @@ install:
 
 uninstall:
 	rm $(PREFIX)/bin/patchable
+
+clean:
+  rm -rf build
+  rm -rf dist
+  rm patchable.spec

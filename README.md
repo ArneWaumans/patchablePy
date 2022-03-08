@@ -1,4 +1,4 @@
-# Patchable
+# PatchablePy
 
 Patchable is a python script that attempts to make patching suckless software a bit more suckless. It does this by disecting the patch files, creating component patch files, and applying those component patch files from the bottom to the top for every source file.
 

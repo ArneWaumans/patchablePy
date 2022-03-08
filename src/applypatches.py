@@ -9,8 +9,10 @@ def numkeys(text):
     return [atoi(c) for c in re.split('(\d+)', text)]
 
 def cleanup():
-    print("cleaning patchcomps...")
-    os.system("rm -r ./patchcomps")
+    cleanupYN = input("Do you want to remove the patchcomps? [Y/n]? ")
+    if (cleanupYN.lower() == 'y'):
+        print("cleaning patchcomps...")
+        os.system("rm -r ./patchcomps")
 
 def ApplyPatches():
     patchCompDir = os.listdir(os.getcwd() + "/patchcomps")
